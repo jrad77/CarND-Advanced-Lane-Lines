@@ -54,13 +54,13 @@ Here is a demonstration of the distortion correction on a road image:
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of thesholding on the S channel from the HLS space and a gradient thresholds in the x direction to generate a binary image in the fourth code cell of my notebook.  Here are some an examples of my output for this step.  
+I used a combination of thresholding on the S channel from the HLS space and a gradient thresholds in the x direction to generate a binary image in the fourth code cell of my notebook.  Here are some an examples of my output for this step.  
 
 ![alt text][image3]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `transform_persepctive()` and `reverse_transform_perspective()`, which appears in fifth cell of the notebook.  The `transform_persepctive()` function takes as inputs an image (`img`) and performs a perspective transform on it. The functor has the camera matrix M captured with it, so it does not need to be provided. I chose the hardcode the source and destination points for calculating the M matrix by externally veiwing the image with edisplay and finding the coordinates in the image itself.
+The code for my perspective transform includes a function called `transform_persepctive()` and `reverse_transform_perspective()`, which appears in fifth cell of the notebook.  The `transform_persepctive()` function takes as inputs an image (`img`) and performs a perspective transform on it. The functor has the camera matrix M captured with it, so it does not need to be provided. I chose the hardcode the source and destination points for calculating the M matrix by externally viewing the image with edisplay and finding the coordinates in the image itself.
 
 This resulted in the following source and destination points:
 
@@ -77,17 +77,17 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I fit my lane lines with a 2nd order polynomialin the `detect_lines()` function in the seventh cell of the notebook. The results look like this:
+Then I fit my lane lines with a 2nd order polynomial in the `detect_lines()` function in the seventh cell of the notebook. The results look like this:
 
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lin the function `calc_curvature()` in the seventh code cell of the notebook.
+I did this in the function `calc_curvature()` in the seventh code cell of the notebook.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in the `draw_overlay()` function in the eigth code cell.  Here is an example of my result on a test image:
+I implemented this step in the `draw_overlay()` function in the eighth code cell.  Here is an example of my result on a test image:
 
 ![alt text][image6]
 
@@ -100,7 +100,7 @@ I implemented this step in the `draw_overlay()` function in the eigth code cell.
 Here's a video showing the lane fitting. There are some small imperfections but nothing catastrophic. This could easily be smoothed out by using information from the
 previous fittings and doing some outlier detection.
 
-![alt text][video1]
+![Link to my video example][video1]
 
 ---
 
@@ -108,4 +108,4 @@ previous fittings and doing some outlier detection.
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The current pipeline is a solid starting point but is not very robust. More complex examples with trickier lighting and worse road conditions could easily make it fail. Using the time of day or the amount of light present in the image could be used as a heursitic for using a different pipeline. Simple additions like keeping a running weighted average of the lane lines, and rejecting outliers would make this more robust.
+The current pipeline is a solid starting point but is not very robust. More complex examples with trickier lighting and worse road conditions could easily make it fail. Using the time of day or the amount of light present in the image could be used as a heuristic for using a different pipeline. Simple additions like keeping a running weighted average of the lane lines, and rejecting outliers would make this more robust.
